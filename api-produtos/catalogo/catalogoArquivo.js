@@ -17,4 +17,14 @@ export function criarCatalogoArquivo(caminho) {
         const categorias = (await listar()).map(({categoria})=>categoria);
         return [...new Set(categorias)];
     }
+
+    async function criar(dados) {
+        const produtos = await listar();
+        const proximoId = Math.max(0, ...produtos.map(({id})=>id)) + 1;
+        const produto = new Produto({id:proximoId, ...dados});
+        const atualizados = [...produtos, produto];
+        await gravarJson(caminho, atualizados);
+        return produto;
+    }
+    return {listar, buscarPorId, listarCategorias, criar };
 }
