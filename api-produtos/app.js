@@ -25,8 +25,16 @@ async function executar() {
     const caminhoCatalogo = process.env.CATALOGO_ARQUIVO || caminhoPadrao;
     const catalogo = criarCatalogoArquivo(caminhoCatalogo);
 
-    
-      
+    exibirDiagnostico(configuracao);
+
+    if (comando === 'listar') {
+      console.table(((await catalogo.listar()).map(resumirProduto)));
+    } else if (comando === 'buscar') {
+      const id = Number(process.arch[4]);
+      if(!Number.isInteger(id)) throw new Error('Informe um identificador inteiro');
+      console.log(resumirProduto(await catalogo.buscarPorId(id)));
+    } else if ()
+
   } catch (erro) {
     console.error(erro.message);
     process.exitCode = 1;
