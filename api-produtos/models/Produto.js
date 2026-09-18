@@ -14,7 +14,7 @@ export default class Produto{
         if(!Number.isInteger(estoque) || estoque < 0 || !Number.isFinite(estoque)) {
             throw new TypeError('Estoque Invalido');
         }
-        if(typeof categoria !== 'string' || nome.trim() === '') {
+        if(typeof categoria !== 'string' || categoria.trim() === '') {
             throw new TypeError('Categoria é obrigatoria')
         }
         Object.assign(this,{
