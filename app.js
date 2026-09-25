@@ -10,6 +10,10 @@ app.get('/api/check', (req, res) =>{
   res.status(200).json({status: 'ok', mensagem: 'Servidor Funcionando via HTTP!'});
 });
 
+app.get('/app/check', (req, res) =>{
+  res.status(200).json({status: 'ok', mensagem: 'Servidor Funcionando via HTTP!'});
+});
+
 app.use('/api/produto', produtoRoutes)
 
 app.use((req, res) =>{

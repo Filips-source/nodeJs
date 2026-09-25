@@ -18,7 +18,7 @@ export function carregarAmbiente(arquivoDeConfiguracao){
     return {
         nomeAluno: process.env.NOME_ALUNO,
         turma: process.env.TURMA,
-        porta: process.env.PORTA,
+        porta: Number(process.env.PORT),
         ambiente: process.env.NODE_ENV || 'development'
     }
 }
